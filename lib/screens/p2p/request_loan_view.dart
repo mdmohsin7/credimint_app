@@ -258,10 +258,11 @@ class _RequestLoanViewState extends State<RequestLoanView> {
                 amount: _amountController.text + amountDenom,
                 collateral: collateral + collateralDenom,
                 fee: _feeController.text + feeDenom,
-                deadline: _deadlineController.text,
+                deadline: DateTime.parse(_deadlineController.text)
+                    .millisecondsSinceEpoch
+                    .toString(),
               )
                   .then((value) {
-                print(value);
                 Navigator.pop(context);
               });
             },
