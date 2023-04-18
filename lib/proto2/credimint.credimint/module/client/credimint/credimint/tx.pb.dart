@@ -232,3 +232,211 @@ class MsgApproveLoanResponse extends $pb.GeneratedMessage {
   static MsgApproveLoanResponse? _defaultInstance;
 }
 
+class MsgRepayLoan extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgRepayLoan', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'credimint.credimint'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..a<$fixnum.Int64>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'repayTime', protoName: 'repayTime')
+    ..hasRequiredFields = false
+  ;
+
+  MsgRepayLoan._() : super();
+  factory MsgRepayLoan({
+    $core.String? creator,
+    $fixnum.Int64? id,
+    $core.String? repayTime,
+  }) {
+    final _result = create();
+    if (creator != null) {
+      _result.creator = creator;
+    }
+    if (id != null) {
+      _result.id = id;
+    }
+    if (repayTime != null) {
+      _result.repayTime = repayTime;
+    }
+    return _result;
+  }
+  factory MsgRepayLoan.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgRepayLoan.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgRepayLoan clone() => MsgRepayLoan()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgRepayLoan copyWith(void Function(MsgRepayLoan) updates) => super.copyWith((message) => updates(message as MsgRepayLoan)) as MsgRepayLoan; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgRepayLoan create() => MsgRepayLoan._();
+  MsgRepayLoan createEmptyInstance() => create();
+  static $pb.PbList<MsgRepayLoan> createRepeated() => $pb.PbList<MsgRepayLoan>();
+  @$core.pragma('dart2js:noInline')
+  static MsgRepayLoan getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgRepayLoan>(create);
+  static MsgRepayLoan? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get creator => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set creator($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCreator() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCreator() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get id => $_getI64(1);
+  @$pb.TagNumber(2)
+  set id($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get repayTime => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set repayTime($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasRepayTime() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearRepayTime() => clearField(3);
+}
+
+class MsgRepayLoanResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgRepayLoanResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'credimint.credimint'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  MsgRepayLoanResponse._() : super();
+  factory MsgRepayLoanResponse() => create();
+  factory MsgRepayLoanResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgRepayLoanResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgRepayLoanResponse clone() => MsgRepayLoanResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgRepayLoanResponse copyWith(void Function(MsgRepayLoanResponse) updates) => super.copyWith((message) => updates(message as MsgRepayLoanResponse)) as MsgRepayLoanResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgRepayLoanResponse create() => MsgRepayLoanResponse._();
+  MsgRepayLoanResponse createEmptyInstance() => create();
+  static $pb.PbList<MsgRepayLoanResponse> createRepeated() => $pb.PbList<MsgRepayLoanResponse>();
+  @$core.pragma('dart2js:noInline')
+  static MsgRepayLoanResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgRepayLoanResponse>(create);
+  static MsgRepayLoanResponse? _defaultInstance;
+}
+
+class MsgLiquidateLoan extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgLiquidateLoan', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'credimint.credimint'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..a<$fixnum.Int64>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'liquidationTime', protoName: 'liquidationTime')
+    ..hasRequiredFields = false
+  ;
+
+  MsgLiquidateLoan._() : super();
+  factory MsgLiquidateLoan({
+    $core.String? creator,
+    $fixnum.Int64? id,
+    $core.String? liquidationTime,
+  }) {
+    final _result = create();
+    if (creator != null) {
+      _result.creator = creator;
+    }
+    if (id != null) {
+      _result.id = id;
+    }
+    if (liquidationTime != null) {
+      _result.liquidationTime = liquidationTime;
+    }
+    return _result;
+  }
+  factory MsgLiquidateLoan.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgLiquidateLoan.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgLiquidateLoan clone() => MsgLiquidateLoan()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgLiquidateLoan copyWith(void Function(MsgLiquidateLoan) updates) => super.copyWith((message) => updates(message as MsgLiquidateLoan)) as MsgLiquidateLoan; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgLiquidateLoan create() => MsgLiquidateLoan._();
+  MsgLiquidateLoan createEmptyInstance() => create();
+  static $pb.PbList<MsgLiquidateLoan> createRepeated() => $pb.PbList<MsgLiquidateLoan>();
+  @$core.pragma('dart2js:noInline')
+  static MsgLiquidateLoan getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgLiquidateLoan>(create);
+  static MsgLiquidateLoan? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get creator => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set creator($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCreator() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCreator() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get id => $_getI64(1);
+  @$pb.TagNumber(2)
+  set id($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get liquidationTime => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set liquidationTime($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasLiquidationTime() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearLiquidationTime() => clearField(3);
+}
+
+class MsgLiquidateLoanResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgLiquidateLoanResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'credimint.credimint'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  MsgLiquidateLoanResponse._() : super();
+  factory MsgLiquidateLoanResponse() => create();
+  factory MsgLiquidateLoanResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgLiquidateLoanResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgLiquidateLoanResponse clone() => MsgLiquidateLoanResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgLiquidateLoanResponse copyWith(void Function(MsgLiquidateLoanResponse) updates) => super.copyWith((message) => updates(message as MsgLiquidateLoanResponse)) as MsgLiquidateLoanResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgLiquidateLoanResponse create() => MsgLiquidateLoanResponse._();
+  MsgLiquidateLoanResponse createEmptyInstance() => create();
+  static $pb.PbList<MsgLiquidateLoanResponse> createRepeated() => $pb.PbList<MsgLiquidateLoanResponse>();
+  @$core.pragma('dart2js:noInline')
+  static MsgLiquidateLoanResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgLiquidateLoanResponse>(create);
+  static MsgLiquidateLoanResponse? _defaultInstance;
+}
+

@@ -47,3 +47,41 @@ const MsgApproveLoanResponse$json = const {
 
 /// Descriptor for `MsgApproveLoanResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List msgApproveLoanResponseDescriptor = $convert.base64Decode('ChZNc2dBcHByb3ZlTG9hblJlc3BvbnNl');
+@$core.Deprecated('Use msgRepayLoanDescriptor instead')
+const MsgRepayLoan$json = const {
+  '1': 'MsgRepayLoan',
+  '2': const [
+    const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
+    const {'1': 'id', '3': 2, '4': 1, '5': 4, '10': 'id'},
+    const {'1': 'repayTime', '3': 3, '4': 1, '5': 9, '10': 'repayTime'},
+  ],
+};
+
+/// Descriptor for `MsgRepayLoan`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgRepayLoanDescriptor = $convert.base64Decode('CgxNc2dSZXBheUxvYW4SGAoHY3JlYXRvchgBIAEoCVIHY3JlYXRvchIOCgJpZBgCIAEoBFICaWQSHAoJcmVwYXlUaW1lGAMgASgJUglyZXBheVRpbWU=');
+@$core.Deprecated('Use msgRepayLoanResponseDescriptor instead')
+const MsgRepayLoanResponse$json = const {
+  '1': 'MsgRepayLoanResponse',
+};
+
+/// Descriptor for `MsgRepayLoanResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgRepayLoanResponseDescriptor = $convert.base64Decode('ChRNc2dSZXBheUxvYW5SZXNwb25zZQ==');
+@$core.Deprecated('Use msgLiquidateLoanDescriptor instead')
+const MsgLiquidateLoan$json = const {
+  '1': 'MsgLiquidateLoan',
+  '2': const [
+    const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
+    const {'1': 'id', '3': 2, '4': 1, '5': 4, '10': 'id'},
+    const {'1': 'liquidationTime', '3': 3, '4': 1, '5': 9, '10': 'liquidationTime'},
+  ],
+};
+
+/// Descriptor for `MsgLiquidateLoan`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgLiquidateLoanDescriptor = $convert.base64Decode('ChBNc2dMaXF1aWRhdGVMb2FuEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISDgoCaWQYAiABKARSAmlkEigKD2xpcXVpZGF0aW9uVGltZRgDIAEoCVIPbGlxdWlkYXRpb25UaW1l');
+@$core.Deprecated('Use msgLiquidateLoanResponseDescriptor instead')
+const MsgLiquidateLoanResponse$json = const {
+  '1': 'MsgLiquidateLoanResponse',
+};
+
+/// Descriptor for `MsgLiquidateLoanResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgLiquidateLoanResponseDescriptor = $convert.base64Decode('ChhNc2dMaXF1aWRhdGVMb2FuUmVzcG9uc2U=');
