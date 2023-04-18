@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 import 'package:gap/gap.dart';
 import 'package:loan_flutter/generated/assets.dart';
 import 'package:loan_flutter/repo/repository.dart';
@@ -10,7 +8,6 @@ import 'dart:math' as math;
 import 'package:loan_flutter/utils/size_config.dart';
 import 'package:loan_flutter/widgets/buttons.dart';
 import 'package:loan_flutter/widgets/my_app_bar.dart';
-import 'package:loan_flutter/widgets/people_slider.dart';
 
 class SendMoney extends StatefulWidget {
   const SendMoney({Key? key}) : super(key: key);
@@ -131,7 +128,7 @@ class _SendMoneyState extends State<SendMoney> {
             ],
           ),
           const Gap(20),
-          const PeopleSlider(),
+          // const PeopleSlider(),
           const Gap(10),
           Container(
             width: double.infinity,

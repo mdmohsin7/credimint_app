@@ -1,13 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:loan_flutter/generated/assets.dart';
-import 'package:loan_flutter/json/shortcut_list.dart';
 import 'package:loan_flutter/repo/repository.dart';
 import 'package:loan_flutter/utils/iconly/iconly_bold.dart';
 import 'package:loan_flutter/widgets/custom_list_tile.dart';
 import 'package:loan_flutter/widgets/my_app_bar.dart';
-import 'package:provider/provider.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -48,21 +45,6 @@ class Profile extends StatelessWidget {
                           style: TextStyle(
                               color: Repository.subTextColor(context))),
                       const Gap(25),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: profilesShortcutList.map<Widget>((e) {
-                          return Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 15),
-                            padding: const EdgeInsets.all(13),
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                            ),
-                            child: Icon(e['icon'], color: e['color']),
-                          );
-                        }).toList(),
-                      ),
-                      const Gap(25)
                     ],
                   ),
                 ),

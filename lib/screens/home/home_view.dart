@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:loan_flutter/json/transactions.dart';
 import 'package:loan_flutter/providers/account_provider.dart';
 import 'package:loan_flutter/repo/repository.dart';
 import 'package:loan_flutter/screens/staking/staking_view.dart';

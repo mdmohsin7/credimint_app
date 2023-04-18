@@ -16,6 +16,13 @@ class AccountProvider extends ChangeNotifier {
   List<Loan> loans = [];
   List<Loan> userLoans = [];
 
+  void refreshData() {
+    getUserScore();
+    getAllLoans();
+    getUserLoans();
+    getBalance();
+  }
+
   void importWallet(String mnemonic, String accountName) async {
     walletInUse = Wallet.derive(mnemonic.split(" "), networkInfo);
     wallets[walletInUse.bech32Address] = [accountName, walletInUse];
@@ -70,7 +77,6 @@ class AccountProvider extends ChangeNotifier {
     );
     final sender = TxSender.fromNetworkInfo(networkInfo);
     final result = await sender.broadcastTx(signedTx);
-    print(result.data);
     notifyListeners();
     return result;
   }
