@@ -440,3 +440,197 @@ class MsgLiquidateLoanResponse extends $pb.GeneratedMessage {
   static MsgLiquidateLoanResponse? _defaultInstance;
 }
 
+class MsgLiquidStake extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgLiquidStake', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'credimint.credimint'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'validator')
+    ..hasRequiredFields = false
+  ;
+
+  MsgLiquidStake._() : super();
+  factory MsgLiquidStake({
+    $core.String? creator,
+    $core.String? amount,
+    $core.String? validator,
+  }) {
+    final _result = create();
+    if (creator != null) {
+      _result.creator = creator;
+    }
+    if (amount != null) {
+      _result.amount = amount;
+    }
+    if (validator != null) {
+      _result.validator = validator;
+    }
+    return _result;
+  }
+  factory MsgLiquidStake.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgLiquidStake.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgLiquidStake clone() => MsgLiquidStake()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgLiquidStake copyWith(void Function(MsgLiquidStake) updates) => super.copyWith((message) => updates(message as MsgLiquidStake)) as MsgLiquidStake; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgLiquidStake create() => MsgLiquidStake._();
+  MsgLiquidStake createEmptyInstance() => create();
+  static $pb.PbList<MsgLiquidStake> createRepeated() => $pb.PbList<MsgLiquidStake>();
+  @$core.pragma('dart2js:noInline')
+  static MsgLiquidStake getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgLiquidStake>(create);
+  static MsgLiquidStake? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get creator => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set creator($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCreator() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCreator() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get amount => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set amount($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasAmount() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearAmount() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get validator => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set validator($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasValidator() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearValidator() => clearField(3);
+}
+
+class MsgLiquidStakeResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgLiquidStakeResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'credimint.credimint'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  MsgLiquidStakeResponse._() : super();
+  factory MsgLiquidStakeResponse() => create();
+  factory MsgLiquidStakeResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgLiquidStakeResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgLiquidStakeResponse clone() => MsgLiquidStakeResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgLiquidStakeResponse copyWith(void Function(MsgLiquidStakeResponse) updates) => super.copyWith((message) => updates(message as MsgLiquidStakeResponse)) as MsgLiquidStakeResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgLiquidStakeResponse create() => MsgLiquidStakeResponse._();
+  MsgLiquidStakeResponse createEmptyInstance() => create();
+  static $pb.PbList<MsgLiquidStakeResponse> createRepeated() => $pb.PbList<MsgLiquidStakeResponse>();
+  @$core.pragma('dart2js:noInline')
+  static MsgLiquidStakeResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgLiquidStakeResponse>(create);
+  static MsgLiquidStakeResponse? _defaultInstance;
+}
+
+class MsgCancelLoan extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCancelLoan', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'credimint.credimint'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..a<$fixnum.Int64>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false
+  ;
+
+  MsgCancelLoan._() : super();
+  factory MsgCancelLoan({
+    $core.String? creator,
+    $fixnum.Int64? id,
+  }) {
+    final _result = create();
+    if (creator != null) {
+      _result.creator = creator;
+    }
+    if (id != null) {
+      _result.id = id;
+    }
+    return _result;
+  }
+  factory MsgCancelLoan.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgCancelLoan.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgCancelLoan clone() => MsgCancelLoan()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgCancelLoan copyWith(void Function(MsgCancelLoan) updates) => super.copyWith((message) => updates(message as MsgCancelLoan)) as MsgCancelLoan; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgCancelLoan create() => MsgCancelLoan._();
+  MsgCancelLoan createEmptyInstance() => create();
+  static $pb.PbList<MsgCancelLoan> createRepeated() => $pb.PbList<MsgCancelLoan>();
+  @$core.pragma('dart2js:noInline')
+  static MsgCancelLoan getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCancelLoan>(create);
+  static MsgCancelLoan? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get creator => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set creator($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCreator() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCreator() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $fixnum.Int64 get id => $_getI64(1);
+  @$pb.TagNumber(2)
+  set id($fixnum.Int64 v) { $_setInt64(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearId() => clearField(2);
+}
+
+class MsgCancelLoanResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCancelLoanResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'credimint.credimint'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  MsgCancelLoanResponse._() : super();
+  factory MsgCancelLoanResponse() => create();
+  factory MsgCancelLoanResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgCancelLoanResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgCancelLoanResponse clone() => MsgCancelLoanResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgCancelLoanResponse copyWith(void Function(MsgCancelLoanResponse) updates) => super.copyWith((message) => updates(message as MsgCancelLoanResponse)) as MsgCancelLoanResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgCancelLoanResponse create() => MsgCancelLoanResponse._();
+  MsgCancelLoanResponse createEmptyInstance() => create();
+  static $pb.PbList<MsgCancelLoanResponse> createRepeated() => $pb.PbList<MsgCancelLoanResponse>();
+  @$core.pragma('dart2js:noInline')
+  static MsgCancelLoanResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCancelLoanResponse>(create);
+  static MsgCancelLoanResponse? _defaultInstance;
+}
+

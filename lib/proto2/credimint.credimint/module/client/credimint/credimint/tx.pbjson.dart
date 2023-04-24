@@ -85,3 +85,40 @@ const MsgLiquidateLoanResponse$json = const {
 
 /// Descriptor for `MsgLiquidateLoanResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List msgLiquidateLoanResponseDescriptor = $convert.base64Decode('ChhNc2dMaXF1aWRhdGVMb2FuUmVzcG9uc2U=');
+@$core.Deprecated('Use msgLiquidStakeDescriptor instead')
+const MsgLiquidStake$json = const {
+  '1': 'MsgLiquidStake',
+  '2': const [
+    const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
+    const {'1': 'amount', '3': 2, '4': 1, '5': 9, '10': 'amount'},
+    const {'1': 'validator', '3': 3, '4': 1, '5': 9, '10': 'validator'},
+  ],
+};
+
+/// Descriptor for `MsgLiquidStake`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgLiquidStakeDescriptor = $convert.base64Decode('Cg5Nc2dMaXF1aWRTdGFrZRIYCgdjcmVhdG9yGAEgASgJUgdjcmVhdG9yEhYKBmFtb3VudBgCIAEoCVIGYW1vdW50EhwKCXZhbGlkYXRvchgDIAEoCVIJdmFsaWRhdG9y');
+@$core.Deprecated('Use msgLiquidStakeResponseDescriptor instead')
+const MsgLiquidStakeResponse$json = const {
+  '1': 'MsgLiquidStakeResponse',
+};
+
+/// Descriptor for `MsgLiquidStakeResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgLiquidStakeResponseDescriptor = $convert.base64Decode('ChZNc2dMaXF1aWRTdGFrZVJlc3BvbnNl');
+@$core.Deprecated('Use msgCancelLoanDescriptor instead')
+const MsgCancelLoan$json = const {
+  '1': 'MsgCancelLoan',
+  '2': const [
+    const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
+    const {'1': 'id', '3': 2, '4': 1, '5': 4, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `MsgCancelLoan`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgCancelLoanDescriptor = $convert.base64Decode('Cg1Nc2dDYW5jZWxMb2FuEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISDgoCaWQYAiABKARSAmlk');
+@$core.Deprecated('Use msgCancelLoanResponseDescriptor instead')
+const MsgCancelLoanResponse$json = const {
+  '1': 'MsgCancelLoanResponse',
+};
+
+/// Descriptor for `MsgCancelLoanResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgCancelLoanResponseDescriptor = $convert.base64Decode('ChVNc2dDYW5jZWxMb2FuUmVzcG9uc2U=');

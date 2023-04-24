@@ -38,6 +38,18 @@ class MsgClient extends $grpc.Client {
           ($1.MsgLiquidateLoan value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.MsgLiquidateLoanResponse.fromBuffer(value));
+  static final _$liquidStake =
+      $grpc.ClientMethod<$1.MsgLiquidStake, $1.MsgLiquidStakeResponse>(
+          '/credimint.credimint.Msg/LiquidStake',
+          ($1.MsgLiquidStake value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $1.MsgLiquidStakeResponse.fromBuffer(value));
+  static final _$cancelLoan =
+      $grpc.ClientMethod<$1.MsgCancelLoan, $1.MsgCancelLoanResponse>(
+          '/credimint.credimint.Msg/CancelLoan',
+          ($1.MsgCancelLoan value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $1.MsgCancelLoanResponse.fromBuffer(value));
 
   MsgClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -66,6 +78,18 @@ class MsgClient extends $grpc.Client {
       $1.MsgLiquidateLoan request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$liquidateLoan, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.MsgLiquidStakeResponse> liquidStake(
+      $1.MsgLiquidStake request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$liquidStake, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.MsgCancelLoanResponse> cancelLoan(
+      $1.MsgCancelLoan request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$cancelLoan, request, options: options);
   }
 }
 
@@ -107,6 +131,22 @@ abstract class MsgServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $1.MsgLiquidateLoan.fromBuffer(value),
             ($1.MsgLiquidateLoanResponse value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$1.MsgLiquidStake, $1.MsgLiquidStakeResponse>(
+            'LiquidStake',
+            liquidStake_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $1.MsgLiquidStake.fromBuffer(value),
+            ($1.MsgLiquidStakeResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.MsgCancelLoan, $1.MsgCancelLoanResponse>(
+        'CancelLoan',
+        cancelLoan_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.MsgCancelLoan.fromBuffer(value),
+        ($1.MsgCancelLoanResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$1.MsgRequestLoanResponse> requestLoan_Pre(
@@ -130,6 +170,16 @@ abstract class MsgServiceBase extends $grpc.Service {
     return liquidateLoan(call, await request);
   }
 
+  $async.Future<$1.MsgLiquidStakeResponse> liquidStake_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.MsgLiquidStake> request) async {
+    return liquidStake(call, await request);
+  }
+
+  $async.Future<$1.MsgCancelLoanResponse> cancelLoan_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.MsgCancelLoan> request) async {
+    return cancelLoan(call, await request);
+  }
+
   $async.Future<$1.MsgRequestLoanResponse> requestLoan(
       $grpc.ServiceCall call, $1.MsgRequestLoan request);
   $async.Future<$1.MsgApproveLoanResponse> approveLoan(
@@ -138,4 +188,8 @@ abstract class MsgServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $1.MsgRepayLoan request);
   $async.Future<$1.MsgLiquidateLoanResponse> liquidateLoan(
       $grpc.ServiceCall call, $1.MsgLiquidateLoan request);
+  $async.Future<$1.MsgLiquidStakeResponse> liquidStake(
+      $grpc.ServiceCall call, $1.MsgLiquidStake request);
+  $async.Future<$1.MsgCancelLoanResponse> cancelLoan(
+      $grpc.ServiceCall call, $1.MsgCancelLoan request);
 }
