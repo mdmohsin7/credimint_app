@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:loan_flutter/providers/account_provider.dart';
 import 'package:loan_flutter/repo/repository.dart';
+import 'package:loan_flutter/screens/create_wallet/import_wallet_view.dart';
 import 'package:loan_flutter/screens/staking/staking_view.dart';
 import 'package:loan_flutter/utils/layouts.dart';
 import 'package:loan_flutter/utils/size_config.dart';
 import 'package:loan_flutter/widgets/asset_tile.dart';
+import 'package:loan_flutter/widgets/bottom_nav.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatefulWidget {
@@ -50,7 +52,8 @@ class _HomeViewState extends State<HomeView> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Hi',
+                        Text(
+                            'Hi ${Provider.of<AccountProvider>(context).walletInUseName}',
                             style: TextStyle(
                                 color: Colors.white.withOpacity(0.7),
                                 fontSize: 16)),
@@ -62,12 +65,169 @@ class _HomeViewState extends State<HomeView> {
                                 fontWeight: FontWeight.bold))
                       ],
                     ),
+                    InkWell(
+                      onTap: () {
+                        //show bottom sheet
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return SingleChildScrollView(
+                              child: Container(
+                                height: size.height * 0.45,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 20),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text('Select Account',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold)),
+                                    const Gap(20),
+                                    Expanded(
+                                      child: ListView.builder(
+                                        physics: NeverScrollableScrollPhysics(),
+                                        itemCount: Provider.of<AccountProvider>(
+                                                context)
+                                            .wallets
+                                            .length,
+                                        itemBuilder: (context, index) {
+                                          return InkWell(
+                                            onTap: () {
+                                              Provider.of<AccountProvider>(
+                                                      context,
+                                                      listen: false)
+                                                  .updateWalletInUse(index);
+                                              Navigator.pushAndRemoveUntil(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (c) =>
+                                                      const BottomNav(),
+                                                ),
+                                                (route) => false,
+                                              );
+                                            },
+                                            child: Container(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 10),
+                                              decoration: BoxDecoration(
+                                                border: Border(
+                                                  bottom: BorderSide(
+                                                    color: Colors.grey
+                                                        .withOpacity(0.2),
+                                                  ),
+                                                ),
+                                              ),
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                    width: 50,
+                                                    height: 50,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15),
+                                                      image: DecorationImage(
+                                                        image: AssetImage(
+                                                            'assets/memoji/${Provider.of<AccountProvider>(context).wallets.values.toList()[index][2]}.png'),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  const Gap(10),
+                                                  Text(
+                                                    Provider.of<AccountProvider>(
+                                                            context)
+                                                        .wallets
+                                                        .values
+                                                        .toList()[index][0],
+                                                    style: TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                    // add account
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ImportWalletView(),
+                                          ),
+                                        );
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 10),
+                                        decoration: BoxDecoration(
+                                          border: Border(
+                                            bottom: BorderSide(
+                                              color:
+                                                  Colors.grey.withOpacity(0.2),
+                                            ),
+                                          ),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                color: Colors.grey
+                                                    .withOpacity(0.2),
+                                              ),
+                                              child: const Icon(
+                                                Icons.add,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            const Gap(10),
+                                            const Text(
+                                              'Add Account',
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                            image: AssetImage(
+                                'assets/memoji/${Provider.of<AccountProvider>(context).currentAvatarIndex}.png'),
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
                 const Gap(25),
                 FittedBox(
                   child: SizedBox(
-                    height: size.height * 0.2,
+                    height: size.height * 0.22,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

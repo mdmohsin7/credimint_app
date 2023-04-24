@@ -17,17 +17,27 @@ class P2PMarketplaceView extends StatefulWidget {
 }
 
 class _P2PMarketplaceViewState extends State<P2PMarketplaceView> {
+  int defaultChoiceIndex = 0;
+  final List<String> _choicesList = [
+    'All',
+    'Requested',
+    'Approved',
+    'Repayed',
+    'Liquidated'
+  ];
   @override
   void initState() {
     Future.delayed(Duration.zero, () {
       Provider.of<AccountProvider>(context, listen: false).getAllLoans();
     });
+    defaultChoiceIndex = 0;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final size = Layouts.getSize(context);
+
     return Scaffold(
       backgroundColor: Repository.bgColor(context),
       appBar: myAppBar(
@@ -35,7 +45,7 @@ class _P2PMarketplaceViewState extends State<P2PMarketplaceView> {
       body: SingleChildScrollView(
         child: ListView(
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           padding: const EdgeInsets.all(15),
           children: [
             Row(
@@ -73,23 +83,57 @@ class _P2PMarketplaceViewState extends State<P2PMarketplaceView> {
                 ),
               ],
             ),
-            const Gap(22),
+            const Gap(24),
+            Wrap(
+              spacing: 8,
+              children: List.generate(_choicesList.length, (index) {
+                return ChoiceChip(
+                  labelPadding: const EdgeInsets.all(2.0),
+                  label: Text(
+                    _choicesList[index],
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText2!
+                        .copyWith(color: Colors.white, fontSize: 14),
+                  ),
+                  selected: defaultChoiceIndex == index,
+                  selectedColor: Repository.selectedItemColor(context),
+                  onSelected: (value) {
+                    setState(() {
+                      defaultChoiceIndex = value ? index : defaultChoiceIndex;
+                    });
+                    Provider.of<AccountProvider>(context, listen: false)
+                        .filterLoans(value
+                            ? _choicesList[index]
+                            : _choicesList[defaultChoiceIndex]);
+                  },
+                  // backgroundColor: color,
+                  elevation: 1,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                );
+              }),
+            ),
+            const Gap(20),
             ListView.separated(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: Provider.of<AccountProvider>(context).loans.length,
+              itemCount:
+                  Provider.of<AccountProvider>(context).tempLoansList.length,
               separatorBuilder: (context, index) => const Gap(22),
               itemBuilder: (context, index) {
                 return LoanCard(
-                  loan: Provider.of<AccountProvider>(context).loans[index],
+                  wallet: Provider.of<AccountProvider>(context).walletInUse,
+                  loan: Provider.of<AccountProvider>(context)
+                      .tempLoansList[index],
                   onPressed: () {
                     Provider.of<AccountProvider>(context, listen: false)
                         .approveLoan(
-                            loanId: Provider.of<AccountProvider>(context,
-                                    listen: false)
-                                .loans[index]
-                                .id
-                                .toInt());
+                      loanId:
+                          Provider.of<AccountProvider>(context, listen: false)
+                              .tempLoansList[index]
+                              .id
+                              .toInt(),
+                    );
                   },
                 );
               },

@@ -93,7 +93,7 @@ class ScoreDetailsView extends StatelessWidget {
                                             .user
                                             .creditScore
                                             .toString(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 30,
                                             fontWeight: FontWeight.bold)),
                                     angle: 90,
@@ -130,9 +130,9 @@ class ScoreDetailsView extends StatelessWidget {
                       subtitle: 'Total number of loans funded',
                       info: Provider.of<AccountProvider>(context)
                           .user
-                          .loanFundedDuration
+                          .numberOfLoansFunded
                           .toString(),
-                      infoColor: Colors.green,
+                      infoColor: Colors.black,
                       emptyMessage: 'No data',
                     ),
                     SummaryCard(
@@ -146,33 +146,34 @@ class ScoreDetailsView extends StatelessWidget {
                       emptyMessage: 'No data',
                     ),
                     SummaryCard(
+                      title: 'Minimum Collateral',
+                      subtitle: 'Minimum collateral in percentage',
+                      info:
+                          '${Provider.of<AccountProvider>(context).user.collateralPercent}%',
+                      infoColor: Colors.black,
+                      emptyMessage: 'No data',
+                    ),
+                    SummaryCard(
                       title: 'Default Rate',
                       subtitle: 'Default rate in percentage',
-                      info: Provider.of<AccountProvider>(context)
-                              .user
-                              .defaultRate
-                              .toString() +
-                          '%',
+                      info:
+                          '${Provider.of<AccountProvider>(context).user.defaultRate}%',
                       infoColor: Colors.black,
                       emptyMessage: 'No data',
                     ),
                     SummaryCard(
                       title: 'Average Loan Duration',
                       subtitle: 'Average loan duration in days',
-                      info: Provider.of<AccountProvider>(context)
-                          .user
-                          .loanDuration
-                          .toString(),
+                      info:
+                          '${Provider.of<AccountProvider>(context).user.loanDuration.toInt() ~/ 86400000} days',
                       infoColor: Colors.black,
                       emptyMessage: 'No data',
                     ),
                     SummaryCard(
                       title: 'Funded Loans Duration',
                       subtitle: 'Average funded loans duration in days',
-                      info: Provider.of<AccountProvider>(context)
-                          .user
-                          .loanFundedDuration
-                          .toString(),
+                      info:
+                          '${Provider.of<AccountProvider>(context).user.loanFundedDuration.toInt() ~/ 86400000} days',
                       infoColor: Colors.black,
                       emptyMessage: 'No data',
                     ),

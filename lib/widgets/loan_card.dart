@@ -1,21 +1,29 @@
+import 'package:alan/alan.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
+import 'package:loan_flutter/providers/account_provider.dart';
 import 'package:loan_flutter/utils/layouts.dart';
 import 'package:loan_flutter/utils/styles.dart';
+import 'package:provider/provider.dart';
 import '../proto2/credimint.credimint/module/export.dart';
 
 class LoanCard extends StatelessWidget {
   final Loan loan;
+  final Wallet wallet;
   final Function onPressed;
-  const LoanCard({super.key, required this.loan, required this.onPressed});
+  const LoanCard(
+      {super.key,
+      required this.loan,
+      required this.onPressed,
+      required this.wallet});
 
   @override
   Widget build(BuildContext context) {
     final size = Layouts.getSize(context);
     return FittedBox(
       child: SizedBox(
-        height: size.height * 0.295,
+        height: size.height * 0.33,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -32,11 +40,11 @@ class LoanCard extends StatelessWidget {
                 children: [
                   Text(
                     loan.id.toString(),
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   ),
                   Text(
                     loan.amoount.toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 22,
                         color: Colors.white),
@@ -50,7 +58,7 @@ class LoanCard extends StatelessWidget {
                   const Gap(4),
                   Text(
                     loan.borrower.toString(),
-                    style: TextStyle(color: Colors.white, fontSize: 10),
+                    style: const TextStyle(color: Colors.white, fontSize: 10),
                   ),
                   const Gap(10),
                   Row(
@@ -67,7 +75,8 @@ class LoanCard extends StatelessWidget {
                           const Gap(3),
                           Text(
                             loan.riskLevel.toString(),
-                            style: TextStyle(color: Colors.white, fontSize: 13),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 13),
                           ),
                         ],
                       ),
@@ -84,7 +93,8 @@ class LoanCard extends StatelessWidget {
                           const Gap(3),
                           Text(
                             loan.borrowerScore.toString(),
-                            style: TextStyle(color: Colors.white, fontSize: 13),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 13),
                           ),
                         ],
                       )
@@ -105,7 +115,8 @@ class LoanCard extends StatelessWidget {
                           const Gap(3),
                           Text(
                             loan.collateral.toString(),
-                            style: TextStyle(color: Colors.white, fontSize: 13),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 13),
                           ),
                         ],
                       ),
@@ -126,25 +137,87 @@ class LoanCard extends StatelessWidget {
                                 .format(DateTime.fromMillisecondsSinceEpoch(
                               int.parse(loan.deadline),
                             )),
-                            style: TextStyle(color: Colors.white, fontSize: 13),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 13),
                           ),
                         ],
                       )
                     ],
                   ),
                   const Gap(10),
-                  Center(
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          padding: const EdgeInsets.only(left: 60, right: 60),
+                  if (loan.state == 'approved')
+                    Center(
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            padding: const EdgeInsets.only(left: 60, right: 60),
+                          ),
+                          onPressed: () async {
+                            if (loan.borrower == wallet.bech32Address) {
+                              Provider.of<AccountProvider>(context,
+                                      listen: false)
+                                  .repayLoan(loanId: loan.id.toInt());
+                            } else {
+                              if (DateTime.fromMillisecondsSinceEpoch(
+                                int.parse(loan.deadline),
+                              ).isBefore(DateTime.now())) {
+                                await Provider.of<AccountProvider>(context,
+                                        listen: false)
+                                    .liquidateLoan(loanId: loan.id.toInt());
+                              }
+                            }
+                          },
+                          child: Text(
+                            (loan.borrower == wallet.bech32Address)
+                                ? 'Repay'
+                                : 'Liquidate',
+                            style: const TextStyle(color: Colors.black),
+                          )),
+                    ),
+                  if (loan.state == 'requested')
+                    Center(
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            padding: const EdgeInsets.only(left: 50, right: 50),
+                          ),
+                          onPressed: () async {
+                            if (loan.borrower == wallet.bech32Address) {
+                              await Provider.of<AccountProvider>(context,
+                                      listen: false)
+                                  .cancelLoan(loanId: loan.id.toInt());
+                            } else {
+                              await Provider.of<AccountProvider>(context,
+                                      listen: false)
+                                  .approveLoan(loanId: loan.id.toInt());
+                            }
+                          },
+                          child: Text(
+                            (loan.borrower == wallet.bech32Address)
+                                ? 'Cancel'
+                                : 'Approve',
+                            style: const TextStyle(color: Colors.black),
+                          )),
+                    ),
+                  if (loan.state == 'repayed' || loan.state == 'liquidated')
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Lender',
+                          style: TextStyle(
+                              color: Colors.white.withOpacity(0.5),
+                              fontSize: 10),
                         ),
-                        onPressed: () => onPressed(),
-                        child: const Text(
-                          'Fullfil',
-                          style: TextStyle(color: Colors.black),
-                        )),
-                  )
+                        const Gap(4),
+                        Text(
+                          loan.lender.toString(),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 10),
+                        ),
+                      ],
+                    )
                 ],
               ),
             ),

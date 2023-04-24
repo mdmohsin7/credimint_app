@@ -116,11 +116,12 @@ class _ImportWalletViewState extends State<ImportWalletView> {
                           Provider.of<AccountProvider>(context, listen: false)
                               .importWallet(_seedPhraseController.text,
                                   _accountNameController.text);
-                          Navigator.pushReplacement(
+                          Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
                               builder: (c) => const BottomNav(),
                             ),
+                            (route) => false,
                           );
                         }
                       },

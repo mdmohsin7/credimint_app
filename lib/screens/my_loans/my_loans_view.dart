@@ -17,6 +17,14 @@ class MyLoansView extends StatefulWidget {
 }
 
 class _MyLoansViewState extends State<MyLoansView> {
+  int defaultChoiceIndex = 0;
+  final List<String> _choicesList = [
+    'All',
+    'Requested',
+    'Approved',
+    'Repayed',
+    'Liquidated'
+  ];
   @override
   void initState() {
     Future.delayed(Duration.zero, () {
@@ -72,12 +80,49 @@ class _MyLoansViewState extends State<MyLoansView> {
             ],
           ),
           const Gap(22),
-          ListView.builder(
+          Wrap(
+            spacing: 8,
+            children: List.generate(_choicesList.length, (index) {
+              return ChoiceChip(
+                labelPadding: const EdgeInsets.all(2.0),
+                label: Text(
+                  _choicesList[index],
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText2!
+                      .copyWith(color: Colors.white, fontSize: 14),
+                ),
+                selected: defaultChoiceIndex == index,
+                selectedColor: Repository.selectedItemColor(context),
+                onSelected: (value) {
+                  setState(() {
+                    defaultChoiceIndex = value ? index : defaultChoiceIndex;
+                  });
+                  Provider.of<AccountProvider>(context, listen: false)
+                      .filterUserLoans(value
+                          ? _choicesList[index]
+                          : _choicesList[defaultChoiceIndex]);
+                },
+                // backgroundColor: color,
+                elevation: 1,
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+              );
+            }),
+          ),
+          const Gap(22),
+          ListView.separated(
             shrinkWrap: true,
-            itemCount: Provider.of<AccountProvider>(context).userLoans.length,
+            physics: const NeverScrollableScrollPhysics(),
+            separatorBuilder: (context, index) {
+              return const Gap(22);
+            },
+            itemCount:
+                Provider.of<AccountProvider>(context).tempUserLoansList.length,
             itemBuilder: (context, index) {
               return LoanCard(
-                loan: Provider.of<AccountProvider>(context).userLoans[index],
+                wallet: Provider.of<AccountProvider>(context).walletInUse,
+                loan: Provider.of<AccountProvider>(context)
+                    .tempUserLoansList[index],
                 onPressed: () {},
               );
             },

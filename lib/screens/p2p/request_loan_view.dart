@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
-import 'package:loan_flutter/generated/assets.dart';
 import 'package:loan_flutter/providers/account_provider.dart';
 import 'package:loan_flutter/repo/repository.dart';
 import 'package:loan_flutter/utils/layouts.dart';
@@ -58,9 +57,8 @@ class _RequestLoanViewState extends State<RequestLoanView> {
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.only(left: 15),
               labelText: Provider.of<AccountProvider>(context, listen: false)
-                      .user
-                      .index ??
-                  "ejnkwm",
+                  .user
+                  .index,
               labelStyle: const TextStyle(fontSize: 16),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -254,7 +252,7 @@ class _RequestLoanViewState extends State<RequestLoanView> {
             context: context,
             callback: () async {
               await Provider.of<AccountProvider>(context, listen: false)
-                  .requestALoan(
+                  .requestLoan(
                 amount: _amountController.text + amountDenom,
                 collateral: collateral + collateralDenom,
                 fee: _feeController.text + feeDenom,

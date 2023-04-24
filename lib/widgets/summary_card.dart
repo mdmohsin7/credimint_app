@@ -73,16 +73,6 @@ class SummaryCard extends StatelessWidget {
                 ),
               ),
             ),
-            // Card arrow icon
-            Container(
-              width: deviceWidth / 12,
-              height: double.infinity,
-              child: const Icon(
-                Icons.arrow_forward_ios,
-                color: Color(0xFF999999),
-                size: 20,
-              ),
-            ),
           ],
         ),
       ),
